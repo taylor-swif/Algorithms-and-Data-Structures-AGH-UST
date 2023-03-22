@@ -26,10 +26,13 @@ def heapSort(T):
 
 def reverse(s):
     n = len(s)
-    if s[0] > s[n-1]:
-        return s[::-1]
-    else:
-        return s
+    i = 0
+    while i < n//2:
+        if s[i] > s[n-i-1]:
+            return s[::-1]
+        else:
+            return s
+    return s
     
 def strong_string(T):
     n = len(T)
