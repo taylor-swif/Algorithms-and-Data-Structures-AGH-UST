@@ -1,20 +1,48 @@
-def partition_Lomuto(T, p, r):
-    x = T[r]
+def partitionLomuto(T, p, r):
+    pivot = T[r]
     i = p - 1
 
     for j in range(p, r):
-        if T[j] <= x:
+        if T[j] <= pivot:
             i += 1
             T[i], T[j] = T[j], T[i]
     
     T[i + 1], T[r] = T[r], T[i + 1]
     return i + 1
 
+def partiotionHoare(T, p, r):
+    pivot = T[p]
+    i = p - 1
+    j = r + 1
+
+    while True:
+
+        i += 1
+        while T[i] < pivot:
+            i += 1
+
+        j -= 1
+        while T[j] > pivot:
+            j -= 1
+        
+        if i >= j:
+            return i
+
+        T[i], T[j] = T[j], T[i]
+    
+
+
+
 
 def quickSort(T, p, r):
     if p < r:
-        q = partition_Lomuto(T, p, r)
-        quickSort(T, p, q - 1)
+
+        #q = partitionLomuto(T, p, r)
+        #quickSort(T, p, q - 1)
+
+        q = partiotionHoare(T, p, r)
+        quickSort(T, p, q)
+        
         quickSort(T, q + 1, r)
 
 
