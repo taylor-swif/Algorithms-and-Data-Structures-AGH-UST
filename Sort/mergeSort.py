@@ -1,8 +1,9 @@
 def merge(T, p, q ,r):
-    A = T[p:r + 1]
+    A = [T[p + i] for i in range(r - p  +1)]
 
-    r = r - p
-    q = q - p
+
+    r -= p
+    q -= p
 
     i = 0
     j = q + 1
