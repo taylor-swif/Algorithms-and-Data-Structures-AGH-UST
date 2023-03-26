@@ -10,6 +10,22 @@ def partitionLomuto(T, p, r):
     T[i + 1], T[r] = T[r], T[i + 1]
     return i + 1
 
+def partitionLomutov2(T, p, r):
+    x = T[r]
+
+    i = p - 1
+    k = p
+
+    while i < r:
+        i += 1
+        if T[i] < x:
+            T[i], T[k] = T[k], T[i]
+            k += 1
+    T[r], T[k] = T[k], T[r]
+
+    return k
+
+
 def partiotionHoare(T, p, r):
     pivot = T[p]
     i = p - 1
