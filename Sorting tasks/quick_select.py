@@ -33,8 +33,7 @@ def quickSelect(T, k, p, r):
         else:
             return quickSelect(T, k, p, q - 1)
 
-T = [0,2,1,6,3,5,9,7,8,4,10]
 
-print(quickSelect(T, 3, 0, len(T) - 1))
+
 
     
