@@ -38,10 +38,3 @@ def median_of_medians(A, k):
     else:
         return median_of_medians(right, k - x - 1)
     
-        
-    
-
-
-A = [25,21,98,100,76,22,43,60,89,87]
-print(median_of_medians(A, 4))
-
