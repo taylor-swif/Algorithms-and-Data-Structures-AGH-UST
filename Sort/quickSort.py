@@ -25,7 +25,6 @@ def partitionLomutov2(T, p, r):
 
     return k
 
-
 def partiotionHoare(T, p, r):
     pivot = T[p]
     i = p - 1
@@ -53,16 +52,23 @@ def partiotionHoare(T, p, r):
 def quickSort(T, p, r):
     if p < r:
 
-        #q = partitionLomuto(T, p, r)
-        #quickSort(T, p, q - 1)
+        q = partitionLomuto(T, p, r)
+        quickSort(T, p, q - 1)
 
-        q = partiotionHoare(T, p, r)
-        quickSort(T, p, q)
+        #q = partiotionHoare(T, p, r)
+        #quickSort(T, p, q)
         
         quickSort(T, q + 1, r)
+
+def quickSortTail(T, p, r):
+    while p < r:
+
+        q = partitionLomuto(T, p, r)
+        quickSort(T, p, q - 1)
+        p = q + 1
 
 
 T = [2, 1, 4, 5, 1, 6, 7, 9, 12, 3, 4]
 print(T)
-quickSort(T, 0, len(T) - 1)
+quickSortTail(T, 0, len(T) - 1)
 print(T)
