@@ -1,4 +1,5 @@
 # useless, but working
+
 def countingSort(T, pos):
     n = len(T)
     C = [0]*26
