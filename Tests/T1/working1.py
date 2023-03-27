@@ -48,15 +48,10 @@ def countingSortNew(T, pos, a, b, l):
     n = b - a + 1
     C = [0]*26
     B = [0]*n
-    # print(pos, a, b, l)
-    # print(l-1-pos)
-    
+
     for i in range(a, b + 1):
-        # y = T[i][0]
-        # z = T[i][0][l-1-pos]
-        # x = ord(T[i][0][l-1-pos])-97
+
         C[ord(T[i][0][l-1-pos])-97] += 1
-    #print(C)
         
     
     for i in range(1,26):
@@ -87,7 +82,6 @@ def radixSortNew(T):
             i += 1
         stop = i - 1
         lens.append((start, stop, dl))
-    #print(lens)
     
     for el in lens:
         pos = 0
@@ -103,7 +97,6 @@ def f(T):
     for i in range(n):
         T[i] = (countingSortString(T[i]), len(T[i]))
     radixSort(T)
-    #print(T)
     radixSortNew(T)
 
     max_power = 0
