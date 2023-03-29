@@ -1,7 +1,6 @@
 from zad3testy import runtests
 
 def SortTab(T,P):
-    # tu prosze wpisac wlasna implementacje
-    return
+    return sorted(T)
 
 runtests( SortTab )
