@@ -1,7 +1,6 @@
 def merge(T, p, q ,r):
     A = [T[p + i] for i in range(r - p  +1)]
 
-
     r -= p
     q -= p
 

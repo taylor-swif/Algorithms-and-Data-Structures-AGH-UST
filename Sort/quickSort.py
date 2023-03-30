@@ -44,8 +44,7 @@ def partiotionHoare(T, p, r):
             return i
 
         T[i], T[j] = T[j], T[i]
-    
-
+      
 
 
 

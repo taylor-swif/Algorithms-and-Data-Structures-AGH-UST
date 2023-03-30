@@ -13,7 +13,6 @@ def partitionLomuto(T, p, r):
             q += 1
     
     T[r], T[q] = T[q], T[r]
-    
 
     return q
 
