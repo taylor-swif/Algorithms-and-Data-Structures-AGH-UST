@@ -76,3 +76,6 @@ def s(G, s, t):
 #chcemy przejsc z krawdzi od s -> t
 # koszt jest malejący
 # dfs
+
+#zadanie 8
+# graf to jest mapa drogowa kraju i chcemy przejechac jak najtaniej, gdzie koszt przejazdu to moze byc 0 lub 1
