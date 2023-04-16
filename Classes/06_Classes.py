@@ -1,36 +1,39 @@
 #1 sprawdzanie czy graf jestr dwudzielny BFS
+from queue import Queue
 
-def dwudzielny(G):
-    colors = [-1] * len(G)
-    Q = Queue()
-    start_v = 0
-    q.put(start_v)
-    colors[start_v] = 1
-    while not Q.empyt():
-        v = Q.get()
-        for n in G[v]:
-            if colors[n] == -1:
-                colors[n] = (colors[v] + 1)%2
-                Q.put()
+def is_biparie(G, s):
+    n = len(G)
+    Q = Queue(0)
+    color = [-1 for v in range(n)]
+
+    Q.put(s)
+    color[s] = 0
+
+    while not Q.empty():
+        u = Q.get()
+        for v in G[u]:
+            if color[v] == -1:
+                color[v] = (color[u] + 1)%2
+                Q.put(v)
             else:
-                if colors[n] == colors[v]:
+                if color[v] == color[u]:
                     return False
     return True
 # lista spojnych skladowych w grafie DFS
-
-def ccs(G):
+#strongly connected components
+def scc(G):
     vis = [0]*len(G)
     def DFS(v):
             vis[v] = 1
             for x in G[v]:
                 if vis[x]: continue
                 DFS(x)
-    i = 0
+    l = 0
     for i in range(len(G)):
-        if not vis[l]:
-            l = 1
+        if not vis[i]:
+            l += 1
             DFS(i)
-    return i
+    return l
 
 # stacje nadwacze odłączanie
 
@@ -61,8 +64,8 @@ def cykl4(G):
 def s(G, s, t):
     vis = [0]*len(G)
     par = [-1]*len(G)
-    g = Queue()
-    vis[]
+    g = Queue(0)
+    # vis[]
 
 # dana jest szachownica nxn
 #kazde pole ma wart. = {1, 2, 3, 4, 5}
