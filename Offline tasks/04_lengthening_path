@@ -1,0 +1,83 @@
+from queue import Queue
+
+def bfs(G, s, t, om1, om2):
+    n = len(G)
+    visited = [False for v in range(n)]
+    parent = [None for v in range(n)]
+    d = [-1 for v in range(n)]
+    Q = Queue(0)
+
+    visited[s] = True
+    d[s] = 0
+    Q.put(s)
+
+    while not Q.empty():
+        u = Q.get()
+        for v in G[u]:
+            if not visited[v] and not (om1 == u and om2 == v):
+                visited[v] = True
+                parent[v] = u
+                d[v] = d[u] + 1
+                if(v == t):
+                    return d[t]
+                Q.put(v)
+    return d[t]
+
+def parent_tab(G, s, t):
+    n = len(G)
+    visited = [False for v in range(n)]
+    parent = [None for v in range(n)]
+    d = [-1 for v in range(n)]
+    Q = Queue(0)
+
+    visited[s] = True
+    d[s] = 0
+    Q.put(s)
+
+    while not Q.empty():
+        u = Q.get()
+        for v in G[u]:
+            if not visited[v]:
+                visited[v] = True
+                parent[v] = u
+                d[v] = d[u] + 1
+                if(v == t):
+                    return parent, d[t]
+                Q.put(v)
+    return parent, d[t]
+
+def longer( G, s, t ):
+    n = len(G)
+    parent, dist = parent_tab(G, s, t)
+    path =[]
+    i = t
+    while i != s:
+        path.append(i)
+        i = parent[i]
+    path.append(s)
+    path = path[::-1]
+    print(len(path), dist)
+    if dist == -1:
+        return None
+    
+    for i in range(len(path) - 1):
+        curr_dist = bfs(G, s, t, path[i], path[i + 1])
+        if curr_dist > dist or curr_dist == -1:
+            return (path[i], path[i + 1])
+        
+    return None
+# G =  [[1, 2], [0, 3], [0, 4], [1, 5, 6], [2, 7], [3, 8], [3, 8], [4, 8], [5, 6, 7, 9], [8, 10, 11], [9, 12], [9, 12], [10, 11]]
+# print(longer(G, 0, 12))
+
+
+
+# Dany jest graf nieskierowany G = (V,E) oraz dwa wierzchołki s,t ∈ V. Proszę zaproponować i zaimplementować algorytm, który sprawdza, czy istnieje taka krawędź {p, q} ∈ E, której usunięcie z E spowoduje wydłużenie najkrótszej ścieżki między s a t (usuwamy tylko jedną krawędź). Algo- rytm powinien być jak najszybszy i używać jak najmniej pamięci. Proszę skrótowo uzasadnić jego poprawność i oszacować złożoność obliczeniową.
+# Algorytm należy zaimplementować jako funkcję:
+# def longer(G, s, t):
+#    ...
+# która przyjmuje graf G oraz numery wierzchołków s, t i zwraca dowolną krawędź spełniającą warunki zadania, lub None jeśli takiej krawędzi w G nie ma. Graf przekazywany jest jako lista list sąsiadów, t.j. G[i] to lista sąsiadów wierzchołka o numerze i. Wierzchołki numerowane są od 0. Funkcja powinna zwrócić krotkę zawierającą numery dwóch wierzchołków pomiędzy którymi jest krawędź spełniająca warunki zadania, lub None jeśli takiej krawędzi nie ma. Jeśli w grafie oryginalnie nie było ścieżki z s do t to funkcja powinna zwrócić None.
+# Przykład. Dla argumentów:
+#     G = [ [1, 2], [0, 2], [0, 1] ]
+#      s=0 t=2      
+
+# wynikiem jest np. krotka: (0, 2)
