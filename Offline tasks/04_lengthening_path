@@ -1,26 +1,23 @@
-from queue import Queue
-
-def bfs(G, s, t, om1, om2):
+from collections import deque
+def bfs(G, s, t, x1, x2):
     n = len(G)
     visited = [False for v in range(n)]
-    parent = [None for v in range(n)]
     d = [-1 for v in range(n)]
-    Q = Queue(0)
+    Q = deque()
 
     visited[s] = True
     d[s] = 0
-    Q.put(s)
+    Q.append(s)
 
-    while not Q.empty():
-        u = Q.get()
+    while len(Q) > 0:
+        u = Q.popleft()
         for v in G[u]:
-            if not visited[v] and not (om1 == u and om2 == v):
+            if not visited[v] and not (x1 == u and x2 == v) and not (x2 == u and x1 == v):
                 visited[v] = True
-                parent[v] = u
                 d[v] = d[u] + 1
                 if(v == t):
                     return d[t]
-                Q.put(v)
+                Q.append(v)
     return d[t]
 
 def parent_tab(G, s, t):
@@ -28,14 +25,14 @@ def parent_tab(G, s, t):
     visited = [False for v in range(n)]
     parent = [None for v in range(n)]
     d = [-1 for v in range(n)]
-    Q = Queue(0)
+    Q = deque()
 
     visited[s] = True
     d[s] = 0
-    Q.put(s)
+    Q.append(s)
 
-    while not Q.empty():
-        u = Q.get()
+    while len(Q) > 0:
+        u = Q.popleft()
         for v in G[u]:
             if not visited[v]:
                 visited[v] = True
@@ -43,11 +40,10 @@ def parent_tab(G, s, t):
                 d[v] = d[u] + 1
                 if(v == t):
                     return parent, d[t]
-                Q.put(v)
+                Q.append(v)
     return parent, d[t]
 
 def longer( G, s, t ):
-    n = len(G)
     parent, dist = parent_tab(G, s, t)
     path =[]
     i = t
@@ -55,15 +51,14 @@ def longer( G, s, t ):
         path.append(i)
         i = parent[i]
     path.append(s)
-    path = path[::-1]
-    print(len(path), dist)
+
     if dist == -1:
         return None
     
-    for i in range(len(path) - 1):
-        curr_dist = bfs(G, s, t, path[i], path[i + 1])
+    for i in range(len(path) - 1, 0, -1):
+        curr_dist = bfs(G, s, t, path[i], path[i - 1])
         if curr_dist > dist or curr_dist == -1:
-            return (path[i], path[i + 1])
+            return (path[i], path[i - 1])
         
     return None
 # G =  [[1, 2], [0, 3], [0, 4], [1, 5, 6], [2, 7], [3, 8], [3, 8], [4, 8], [5, 6, 7, 9], [8, 10, 11], [9, 12], [9, 12], [10, 11]]
