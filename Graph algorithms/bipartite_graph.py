@@ -1,3 +1,6 @@
+# bipartite graph (or bigraph) is a graph whose vertices
+# can be divided into two disjoint and independent sets 
+
 from queue import Queue
 
 #G = [[1, 4], [0, 2], [1, 3, 5], [2, 4, 6], [0, 3, 5], [2, 4], [3, 7], [6]]
