@@ -22,8 +22,8 @@ def Djikstra(E, n, s):
     while pq:
         weight_u, u = heapq.heappop(pq)
         
-        for (v, weight) in G[u]:
-            if(dist[u] + weight) < dist[v]:
+        for v, weight in G[u]:
+            if dist[u] + weight < dist[v]:
                 dist[v] = dist[u] + weight
                 prev[v] = u
                 heapq.heappush(pq, (dist[v], v))
