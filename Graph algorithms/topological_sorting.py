@@ -8,18 +8,15 @@ def top_sort(G):
     visited = [False for v in range(n)]
     parent = [None for v in range(n)]
     sort = []
-    time = 0
     
     def DFSVisit(G, u):
-        nonlocal time
-        time += 1
+
         visited[u] = True
         for v in G[u]:
             if not visited[v]:
                 parent[v] = u
                 DFSVisit(G, v)
         sort.append(u)
-        time += 1
 
     for u in range(n):
         if not visited[u]:
