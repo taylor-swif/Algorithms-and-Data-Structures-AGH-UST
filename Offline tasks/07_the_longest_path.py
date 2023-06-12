@@ -2,8 +2,8 @@ def maze(L):
     n = len(L)
     dp = [[-1 for _ in range(n)] for _ in range(n)]
     dp[0][0] = 0
-    first = [-1 for _ in range(n)]
-    second = [-1 for _ in range(n)]
+    down = [-1 for _ in range(n)]
+    up = [-1 for _ in range(n)]
     for i in range(n - 1):
         if L[i + 1][0] == '.':
             dp[i + 1][0] = dp[i][0] + 1
@@ -12,30 +12,30 @@ def maze(L):
     
     for j in range(1, n):
         if not( L[0][j] == "#" or dp[0][j - 1] == -1): 
-            first[0] = dp[0][j - 1] + 1
+            down[0] = dp[0][j - 1] + 1
 
         for i in range(1, n):
             if L[i][j] != "#":
-                if first[i - 1] == -1 and dp[i][j - 1] == -1:
-                    first[i] = -1
+                if down[i - 1] == -1 and dp[i][j - 1] == -1:
+                    down[i] = -1
                 else:
-                    first[i] = max(first[i - 1], dp[i][j - 1]) + 1
+                    down[i] = max(down[i - 1], dp[i][j - 1]) + 1
 
         if not (L[n - 1][j] == "#" or dp[n - 1][j - 1] == -1): 
-            second[n-1] = dp[n-1][j - 1] + 1
+            up[n-1] = dp[n-1][j - 1] + 1
         for i in range(n-2, -1, -1):
             if L[i][j] != "#":
-                if second[i + 1] == -1 and dp[i][j - 1] == -1:
-                    second[i] = - 1
+                if up[i + 1] == -1 and dp[i][j - 1] == -1:
+                    up[i] = - 1
                 else:
-                    second[i] = max(second[i + 1], dp[i][j - 1]) + 1
+                    up[i] = max(up[i + 1], dp[i][j - 1]) + 1
 
         for i in range(n):
             if L[i][j] == '.':
-                dp[i][j] = max(second[i], first[i])
+                dp[i][j] = max(up[i], down[i])
 
-        first = [-1 for _ in range(n)]
-        second = [-1 for _ in range(n)]
+        down = [-1 for _ in range(n)]
+        up = [-1 for _ in range(n)]
     return dp[n-1][n-1]
 
 
