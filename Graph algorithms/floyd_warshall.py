@@ -15,6 +15,11 @@ def floyd_warshall(G):
             for k in range(n):
                 if d[i][j] > d[i][k] + d[k][j]:
                     d[i][j] = d[i][k] + d[k][j]
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                if d[i][j] > d[i][k] + d[k][j]:
+                    return False
     
     return d
 

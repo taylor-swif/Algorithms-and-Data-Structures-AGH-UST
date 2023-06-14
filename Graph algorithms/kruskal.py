@@ -24,20 +24,21 @@ def edges(G):
     E = []
     for i in range(len(G)):
         for j in range(len(G[i])):
-            if ((G[i][j][0], i ,G[i][j][2])) not in E:
+            if i < G[i][j][0]:
+            # if ((G[i][j][0], i ,G[i][j][2])) not in E:
                 E.append(i, (G[i][j][0] ,G[i][j][2]))
     return E
 
 def kruskal(G):
     E = edges(G)
-    E = E.sort(key= lambda x : x[2])
+    E = sorted(E,key= lambda x : x[2])
     V = []
     MST = []
     for i in range(len(G)):
         V.append(Node(i))
 
     for u, v, w in E:
-        if find(v) != find(u):
+        if find(V[v]) != find(V[u]):
             MST.append((u, v, w))
             union(V[u], V[v])
 
