@@ -1,4 +1,4 @@
-from zad6testy import runtests
+# from zad6testy import runtests
 from collections import deque
 
 def bfs(G, s, t):
@@ -56,7 +56,7 @@ def binworker( M ):
     n = len(G)
     return Ford(G, n - 2, n - 1)
 
-runtests( binworker, all_tests = False )
+# runtests( binworker, all_tests = False )
 
 
 
