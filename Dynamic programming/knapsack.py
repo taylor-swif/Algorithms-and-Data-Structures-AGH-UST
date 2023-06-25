@@ -1,3 +1,7 @@
+# maximum weight
+# W - array of weights
+# P - array of prices
+
 def knapsack(W, P, B):
     n = len(W)
     F = [[0 for b in range(B + 1)] for i in range(n)] # F[i][b]
