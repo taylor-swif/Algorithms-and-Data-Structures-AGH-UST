@@ -24,8 +24,8 @@ def LCS(A, B):
             #     dp[i][j] = dp[i - 1][j - 1] + 1
             # else:
             #     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-    # print(A)
-    # print(*dp, sep='\n')
+
+
     print("  ",end="")
     for i in range(m):
         print(B[i], end=" ")
