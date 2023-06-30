@@ -6,7 +6,7 @@ def ps(A, P, i): # parent searching
         ps(A, P, P[i])
     print(A[i])
 
-def f(A):
+def lis(A):
     n = len(A)
     F = [1] * n
     #P = [-1] * n
@@ -20,4 +20,4 @@ def f(A):
     return max(F)#, P
 
 A = [2, 1, 4, 3, 1, 5, 2, 7, 8, 3]
-print(f(A))
+print(lis(A))
