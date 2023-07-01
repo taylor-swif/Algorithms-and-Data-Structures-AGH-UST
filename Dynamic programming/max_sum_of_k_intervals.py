@@ -1,3 +1,9 @@
+# Rozważamy ciag (a0, .., an-1) liczb naturalnych. Załóżmy, ze zostałpodzielony na k spójnych podcingów: 
+# (do, ..., al1), (al1 +1, ..., al2), ..., (alk-1+1, .., an-1). Przez wartość i-go podciagu rozumiemy sume jego elementów 
+# a przez najgorszy podciag rozumiemy podciag o najmniejszej wartosci (roz- strzygajac remisy w dowolny sposób). 
+# Wartością podziału jest wartość jego najgorszego podciagu. Zadanie polega na znalezieniu podzialu ciagu (a0, . .., an-1) 
+# o maksymalnej wartosci.
+
 def k_intervals(A, k):
     n = len(A)
     s = [0 for _ in range(n)]
