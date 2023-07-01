@@ -4,6 +4,8 @@
 # Wartością podziału jest wartość jego najgorszego podciagu. Zadanie polega na znalezieniu podzialu ciagu (a0, . .., an-1) 
 # o maksymalnej wartosci.
 
+# F[k][i] - oznacza maksymalną wartości minimalnego podziału dla podziału na k podciągów kończącego się na indeksie i
+
 def k_intervals(A, k):
     n = len(A)
     s = [0 for _ in range(n)]
