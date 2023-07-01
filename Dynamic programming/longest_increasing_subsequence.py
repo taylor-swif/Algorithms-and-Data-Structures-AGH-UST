@@ -19,5 +19,46 @@ def lis(A):
     # ps(A, P, 8)
     return max(F)#, P
 
+# https://cp-algorithms.com/sequences/longest_increasing_subsequence.html#solution-in-on-log-n-with-dynamic-programming-and-binary-search
+def lis_v2(A):
+    n = len(A)
+    last = [float('inf') for _ in range(n + 1)]
+    last[0] = float('-inf')
+
+    for i in range(n):
+        for j in range(1, n + 1):
+            if last[j - 1] < A[i] < last[j]:
+                last[j] = A[i]
+    print(last)
+
+    for i in range(n, 0, -1):
+        if last[i] < float('inf'):
+            return i
+    return 0
+
+### nlogn
+def binary_search(A, val): # returns first greater than val
+    left_idx = 0
+    right_idx = len(A) - 1
+
+    while left_idx <= right_idx:
+        mid_idx = (left_idx + right_idx) //2
+
+        if val > A[mid_idx]:
+            left_idx = mid_idx + 1
+        else:
+            right_idx = mid_idx - 1
+    return left_idx
+
+def lis_v2_nlogn(A):
+    n = len(A)
+    last = [float('inf') for _ in range(n + 1)]
+    last[0] = float('-inf')
+
+    for i in range(n):
+        idx = binary_search(last, A[i])
+        last[idx] = A[i]
+
 A = [2, 1, 4, 3, 1, 5, 2, 7, 8, 3]
-print(lis(A))
+A = [3, 1, 5, 7, 2, 4, 9, 3, 17, 3]
+print(lis_v2(A))
