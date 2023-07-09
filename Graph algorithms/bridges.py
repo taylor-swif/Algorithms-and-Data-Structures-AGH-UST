@@ -33,7 +33,6 @@ def bridge(G):
     time_arr = [-1 for v in range(n)]
     visited = [False for v in range(n)]
     low = [-1 for v in range(n)]
-    is_art = [False for v in range(n)]
     time = 0
 
     def DFSVisit(G, s):
@@ -48,10 +47,6 @@ def bridge(G):
                 parent[v] = s
                 DFSVisit(G, v)
                 low[s] = min(low[s], low[v])
-                if low[s] < low[v]:
-                    is_art[s] = True
-                if low[s] == low[v]:
-                    is_art[s] = True
             elif v != parent[s]:
                 low[s] = min(low[s], time_arr[v])
 
@@ -62,8 +57,6 @@ def bridge(G):
     for i in range(n):
         if time_arr[i] == low[i] and parent[i] != None:
             print(parent[i], i)
-        if is_art[i]:
-            print("art: ", i)
 
 
 # print(make_graph(G))
