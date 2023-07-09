@@ -34,16 +34,21 @@ def ferry_2d(T, L):
     dp[0][T[0]] = T[0]
     res = 0
     for i in range(1, n):
+        flag = 1
         for j in range(L + 1):
             if dp[i - 1][j]:
                 s1 = j
                 s2 = sum[i] - j
                 if s1 + T[i] <= L:
                     dp[i][s1 + T[i]] = 1
+                    flag = 0
                     res = i + 1
                 if s2 + T[i] <= L:
                     dp[i][s2 + T[i]] = 1
+                    flag = 0
                     res = i + 1
+        if flag:
+            break
     return res
 
 
