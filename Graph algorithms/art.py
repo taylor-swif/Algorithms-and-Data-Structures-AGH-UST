@@ -28,11 +28,11 @@ def tarjan(G):
 
                 if is_root and not is_art and children >= 2:
                     is_art = True
-                    articulation_points.append(u)
+                    arts.append(u)
 
                 if not is_root and not is_art and low[v] >= time_arr[u]:
                     is_art = True
-                    articulation_points.append(u)
+                    arts.append(u)
             elif v != parent[u]:
                 low[u] = min(low[u], time_arr[v])
 
@@ -40,20 +40,11 @@ def tarjan(G):
     #     if not visited[v]:
     tarjan_dfs(0, True)
 
-    return articulation_points
+    return arts
 
 # Przykładowy graf jako lista sąsiedztwa
-G = {
-    0: [1, 2],
-    1: [0, 2],
-    2: [0, 1, 3, 5],
-    3: [2, 4],
-    4: [3],
-    5: [2, 6, 8],
-    6: [5, 7],
-    7: [6, 8],
-    8: [5, 7],
-}
 
-articulation_points = tarjan(G)
-print("Punkty artykulacji:", articulation_points)
+G = [[1, 2], [0, 4], [0, 3, 4], [2], [1, 2, 5], [4, 6, 7], [5, 7], [5, 6]]
+
+arts = tarjan(G)
+print("Punkty artykulacji:", arts)
