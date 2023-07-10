@@ -35,9 +35,7 @@ def scc(G):
             DFS(i)
     return l
 
-# 3 stacje nadwacze odłączanie
-#TODO
-# 4 dany jest graf G jako macierz sąsiedztwa, czy w tym grafie istnieje cykl długosci 4, składajaący się dokładnie z 4 wierzchłów?
+# 3 dany jest graf G jako macierz sąsiedztwa, czy w tym grafie istnieje cykl długosci 4, składajaący się dokładnie z 4 wierzchłów?
 
 # O(n^4)
 # O(n^3)
@@ -54,7 +52,7 @@ def cykl4(G):
             
     return False
 
-# 5 Graf skierowany G, jako macierz sasiedztwa
+# 4 Graf skierowany G, jako macierz sasiedztwa
 # Znalezć uniwersalne ujście t
 # a) dla kazdego v istnieje krawedz z v do t
 # b) t nie posiada krawedzi wychodzacych
@@ -83,31 +81,4 @@ def exit(G):
     return i
 
 print(exit(G))
-# 6 zdj
-# szukamy najprostrzej siezki w grafie nieskierowanym bfs
-#TODO
 
-def spath(G, s, t):
-    vis = [0]*len(G)
-    par = [-1]*len(G)
-    g = Queue(0)
-    # vis[]
-
-# 7 dana jest szachownica nxn
-#kazde pole ma wart. = {1, 2, 3, 4, 5}
-#chcemy w tajtańszy sposób przejsc z lewego gornego do prawego dolnego
-# szukany: minimalny koszt
-#TODO
-
-# zadanie 8
-#malejące krawędzie
-# G = (V,E)
-# koszt {1, ..., |E|} kazda krawedz ma inny koszt
-#chcemy przejsc z krawdzi od s -> t
-# koszt jest malejący
-# dfs
-#TODO
-
-#zadanie 9
-# graf to jest mapa drogowa kraju i chcemy przejechac jak najtaniej, gdzie koszt przejazdu to moze byc 0 lub 1
-#TODO
