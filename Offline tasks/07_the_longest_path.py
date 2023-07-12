@@ -39,10 +39,18 @@ def maze(L):
     return dp[n-1][n-1]
 
 
-# Magiczny Wojownik otrzymał od Dobrego Maga kolejną szansę. Musi przejść przez kwadratowy labirynt złożony z N × N komnat. Rozpoczyna wędrówkę w komnacie o współrzędnych (0, 0) znaj- dującej się na planie w lewym górnym rogu i musi dotrzeć do komnaty o współrzędnych (n−1,n−1) w prawym dolnym rogu. Niektóre komnaty (zaznaczone na planie znakiem #) są niedostępne i nie można do nich się dostać. Wojownikowi wolno poruszać się tylko w trzech kierunkach, opisanych na planie jako Góra, Prawo i Dół oraz nie wolno mu wrócić do komnaty w której już był. Zadanie postawione przez Maga polega na odwiedzeniu jak największej liczby komnat. Zadanie polega na zaimplementowaniu funkcji:
+# Magiczny Wojownik otrzymał od Dobrego Maga kolejną szansę. Musi przejść przez kwadratowy labirynt złożony z N × N komnat.
+#  Rozpoczyna wędrówkę w komnacie o współrzędnych (0, 0) znaj- dującej się na planie w lewym górnym rogu i 
+# musi dotrzeć do komnaty o współrzędnych (n−1,n−1) w prawym dolnym rogu. Niektóre komnaty (zaznaczone na 
+# planie znakiem #) są niedostępne i nie można do nich się dostać. Wojownikowi wolno poruszać się tylko w trzech kierunkach,
+#  opisanych na planie jako Góra, Prawo i Dół oraz nie wolno mu wrócić do komnaty w której już był. 
+# Zadanie postawione przez Maga polega na odwiedzeniu jak największej liczby komnat. Zadanie polega na zaimplementowaniu funkcji:
 # def maze ( L )
-# która otrzymuje na wejściu tablicę L opisującą labirynt i zwraca największą liczbę komnat, które może odwiedzić Wojownik na swojej drodze lub −1 jeśli dotarcie do końca drogi jest niemożliwe. Komnaty początkowej nie liczymy jako odwiedzonej. Funkcja powinna być możliwie jak najszybsza.
-# Labirynt opisuje lista L = [W0 , W1 , W2 , . . . , Wn−1 ], gdzie każde Wi to napis o długości n znaków. Znak kropki ’.’ oznacza dostępną komnatę a znak ’#’oznacza komnatę niedostępną.
+# która otrzymuje na wejściu tablicę L opisującą labirynt i zwraca największą liczbę komnat, które może odwiedzić Wojownik 
+# na swojej drodze lub −1 jeśli dotarcie do końca drogi jest niemożliwe. Komnaty początkowej nie liczymy jako odwiedzonej. 
+# Funkcja powinna być możliwie jak najszybsza.
+# Labirynt opisuje lista L = [W0 , W1 , W2 , . . . , Wn−1 ], gdzie każde Wi to napis o długości n znaków. Znak kropki ’.’
+#  oznacza dostępną komnatę a znak ’#’oznacza komnatę niedostępną.
 # Przykład. Rozważmy następujący labirynt:
 #     L = [ "....",
 #           "..#.",
