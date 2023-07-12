@@ -1,5 +1,5 @@
-from zad9testy import runtests
-
+# from zad9testy import runtests
+from queue import PriorityQueue
 # n^2
 def min_cost( O, C, T, L ):
  
@@ -85,4 +85,4 @@ L = 25
 # print(min_cost(O, C, T, L)) 
 
 # zmien all_tests na True zeby uruchomic wszystkie testy
-runtests( min_cost, all_tests = True )
+# runtests( min_cost, all_tests = True )
